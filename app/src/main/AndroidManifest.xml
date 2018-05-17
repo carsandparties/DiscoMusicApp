@@ -18,9 +18,19 @@
             </intent-filter>
         </activity>
         <activity android:name=".SongsActivity"
-            android:label="Songs"/>
+            android:label="Songs"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.discomusicapp.MainActivity" />
+        </activity>
         <activity android:name=".NowPlayingActivity"
-            android:label="Now Playing"/>
+            android:label="Now Playing"
+            android:parentActivityName=".SongsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.discomusicapp.SongsActivity" />
+        </activity>
     </application>
 
 </manifest>

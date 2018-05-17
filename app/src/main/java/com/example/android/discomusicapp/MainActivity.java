@@ -7,7 +7,14 @@ package com.example.android.discomusicapp;
         import android.view.View;
         import android.widget.TextView;
 
+        import butterknife.BindView;
+        import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
+    @BindView(R.id.songs) TextView songs;
+    @BindView(R.id.nowPlaying) TextView nowPlaying;
+    @BindView(R.id.search) TextView search;
+    @BindView(R.id.store) TextView store;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
 
+        // Inject the Views using the ButterKnife library
+        ButterKnife.bind(this);
+
         /**
          * Create an OnClickListener for the songs category.
          */
-
-        // Find the View that shows the songs category
-        final TextView songs = (TextView) findViewById(R.id.songs);
 
         // Set a click listener on that View
         if (songs != null) {
@@ -29,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 // The code in this method will be executed when the numbers View is clicked on.
                 @Override
                 public void onClick(View view){
-                    // Create a new intent to open the {@link AlbumsActivity}
+                    // Create a new intent to open the {@link SongsActivity}
                     Intent songsIntent = new Intent(MainActivity.this, SongsActivity.class);
                     // Start the new activity
                     startActivity(songsIntent);
@@ -40,9 +47,6 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Create an OnClickListener for the now playing category.
          */
-
-        // Find the View that shows the family category
-        TextView nowPlaying = (TextView) findViewById(R.id.nowPlaying);
 
         // Set a click listener on that View
         if (nowPlaying != null) {
@@ -61,9 +65,6 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Create an OnClickListener for the search category.
          */
-
-        // Find the View that shows the family category
-        final TextView search = (TextView) findViewById(R.id.search);
 
         // String to store the URL for Google search engine
         final String searchUrl = "https://www.google.com";
@@ -85,9 +86,6 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Create an OnClickListener for the store category.
          */
-
-        // Find the View that shows the store category
-        final TextView store = (TextView) findViewById(R.id.store);
 
         // String to store the URL for the Google Play Music store
         final String url = "https://play.google.com/music/listen";
